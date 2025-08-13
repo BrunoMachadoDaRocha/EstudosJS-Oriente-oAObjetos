@@ -25,11 +25,11 @@ export default class User {
   }
 
   get role() {
-    return this.role;
+    return this.#role;
   }
 
   get ativo() {
-    return this.ativo;
+    return this.#ativo;
   }
 
   set nome(novoNome) {
@@ -39,8 +39,24 @@ export default class User {
     this.#nome = novoNome;
   }
 
+  // exibirInfos() {
+  //   return `${this.nome}, ${this.email}`
+  // }
+
   exibirInfos() {
-    return `${this.nome}, ${this.email}`
+    if (this.role === "estudante") {
+      return `dados estudante: ${this.nome}`
+    }
+    if (this.role === "admin") {
+      return `dados admin: ${this.nome}, ${this.role}`
+    }
+    if (this.role === "docente") {
+      return `dados docente: ${this.nome}, ${this.email}`
+    }
+  }
+
+  static exibirInfosGenericas(nome, email) {
+    return `${nome}, ${email}`
   }
 
 }
